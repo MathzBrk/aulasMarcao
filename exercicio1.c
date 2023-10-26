@@ -1,26 +1,40 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 int main(){
-    int numero;
-    int indice;
+    int numeros[10];
+    int numeroLido;
+    int elementoMaior, valorMaior = INT_MIN;
+    int elementoMenor, valorMenor = INT_MAX;
 
-    printf("\nDigite um numero: ");
-    scanf("%d",&numero);
+    for(int i = 0; i<10; i++){
+        printf("Digite um numero: \n");
+        scanf("%d",&numeroLido);
 
-    if(numero % 2 == 1){
-        for(indice = 0; indice <= numero; indice++){
-        if(indice % 2 == 1){
-            printf("os numeros impares sao: %d\n",indice);
+        numeros[i] = numeroLido;
+    }
+
+   /* elementoMaior = 0;
+    elementoMenor = 0;
+    valorMaior = numeros[0];
+    valorMenor = numeros[0];*/
+
+    for(int i = 0; i<10; i++){
+        if(numeros[i] > valorMaior){
+            elementoMaior = i;
+            valorMaior = numeros[i];
         }
     }
-    }
-    else{
-        for(indice = 0; indice <= numero; indice++){
-            if(indice % 2 == 0){
-                printf(" os numeros pares sao: %d\n",indice);
-            }
+
+    for(int i = 0; i<10; i++){
+        if(numeros[i] < valorMenor){
+            elementoMenor = i;
+            valorMenor = numeros[i];
         }
     }
 
+    printf("O maior elemento eh %d que contem o valor %d",elementoMaior,valorMaior);
+    printf("\nO menor elemento eh %d que contem o valor %d",elementoMenor,valorMenor);
 }

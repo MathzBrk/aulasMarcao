@@ -1,32 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
 
 int main(){
-    int opcao, numero1, numero2;
-    printf("\n1.Multiplicacao");
-    printf("\n2.Divisao");
-    printf("\nEscolha uma opcao: ");
-    scanf("%d",&opcao);
+    int valores[10];
+    int valorDigitado;
+    int posicaoEncontrada = -1; //pratica comum em C
+    srand(time(NULL));
 
-    while(opcao < 1 || opcao > 2){
-        printf("\nDigite uma opcao valida");
-        printf("\nEscolha uma opcao: ");
-        scanf("%d",&opcao);
+   for(int i = 0; i < 10; i++){
+    valores[i] = rand() % 100;
+   }
+
+   for(int i = 0; i < 10; i++){
+    printf("%d\t",valores[i]);
+   }
+
+   printf("\nDigite um valor: ");
+   scanf("%d",&valorDigitado);
+
+   for(int i = 0; i < 10; i++){
+    if(valores[i] == valorDigitado){
+        posicaoEncontrada = i;
     }
-
-    printf("\nDigite o numero 1: ");
-    scanf("%d",&numero1);
-
-    printf("\nDigite o numero 2: ");
-    scanf("%d",&numero2);
-
-    if(opcao == 1){
-        printf("\nO resutaldo eh: %d",(numero1 * numero2));
-    }else{
-        if(numero2 == 0){
-            printf("\nNao eh possivel fazer divisao por zero");
-        }
+   }
+   
+   
+    if(posicaoEncontrada != -1){
+        printf("\nO numero que vc digitou esta na %d posicao", posicaoEncontrada  + 1) ;
     }
-
-
 }
